@@ -1,0 +1,4 @@
+numpy
+matplotlib
+pillow
+matlabengine==25.2.2

@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>main</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-12-04">
+<meta name="DC.source" content="main.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Sampling and Aliasing: Lab S-8: Spectrograms: Harmonic Lines &amp; Chirp Aliasing. 2 Lab Exercises (2.1 &amp; 2.2.1) (authors: Joshua Palter, Ryan Zarekarizi)</a>
+</li>
+<li>
+<a href="#2">2.1(a) &ndash; parameter calculation</a>
+</li>
+<li>
+<a href="#3">2.1(b) &ndash; generate chirp and spectrogram</a>
+</li>
+<li>
+<a href="#4">2.1(c) &ndash; instantaneous frequency and aliasing</a>
+</li>
+<li>
+<a href="#5">2.2.1 PART (a): Parameters</a>
+</li>
+<li>
+<a href="#6">2.2.1 PART (b): plot first 5 periods</a>
+</li>
+<li>
+<a href="#7">2.2.1 PART (c): Spectrogram</a>
+</li>
+<li>
+<a href="#8">2.2.1 PART (d): Harmonic Frequency List</a>
+</li>
+<li>
+<a href="#9">2.2.1 PART (e): Fundamental Frequency of the Harmonics</a>
+</li>
+<li>
+<a href="#10">2.1.1 PART (d): Ratio of A1 vs. A3</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Sampling and Aliasing: Lab S-8: Spectrograms: Harmonic Lines &amp; Chirp Aliasing. 2 Lab Exercises (2.1 &amp; 2.2.1) (authors: Joshua Palter, Ryan Zarekarizi)</h2>
+<pre class="codeinput">addpath(genpath(<span class="string">'../spfirst'</span>))
+spfirst;
+</pre>
+<h2 id="2">2.1(a) &ndash; parameter calculation</h2>
+<pre class="codeinput">
+<span class="comment">% 2.1a asks us to determine the parameters given in equation (1)</span>
+<span class="comment">% This equation is ψ(t) = 2πμt^2 + 2πf_0t + φ</span>
+f1 = 1000; <span class="comment">% start frequency at t1 (Hz)</span>
+f2 = 11000; <span class="comment">% end frequency at t2 (Hz)</span>
+t1 = 0; <span class="comment">% start time (s)</span>
+t2 = 4;<span class="comment">% end time (s)</span>
+
+f0 = f1; <span class="comment">% instantaneous freq at t=0</span>
+mu = (f2 - f1) / (2*(t2 - t1)); <span class="comment">% from 2*mu = (f2-f1)/(t2-t1)</span>
+
+fprintf(<span class="string">'f0 = %.1f Hz\n'</span>,  f0); <span class="comment">% Display the instantaneous freq at t=0</span>
+fprintf(<span class="string">'mu = %.1f Hz/s\n'</span>, mu); <span class="comment">% Display mu</span>
+</pre>
+<pre class="codeoutput">f0 = 1000.0 Hz
+mu = 1250.0 Hz/s
+</pre>
+<h2 id="3">2.1(b) &ndash; generate chirp and spectrogram</h2>
+<pre class="codeinput">
+<span class="comment">% Some setup</span>
+A = 1; <span class="comment">% amplitude</span>
+phi = 0; <span class="comment">% initial phase (rad)</span>
+
+<span class="comment">% 2.1b asks us to generate a chirp signal, and make a spectrogram</span>
+<span class="comment">% with length L_sect. We are also to determine its duration (T_sect)</span>
+fs     = 4000; <span class="comment">% sampling frequency (Hz)</span>
+dt     = 1/fs;
+tStart = 0;
+tStop  = 4;
+tt     = tStart:dt:tStop; <span class="comment">% time</span>
+
+<span class="comment">% angle and signal</span>
+psi = 2*pi*mu*tt.^2 + 2*pi*f0*tt + phi;
+xx  = A * real(exp(1j*psi)); <span class="comment">% real cosine chirp</span>
+
+<span class="comment">% Section Length</span>
+Lsect = 256;
+
+<span class="comment">% section duration in seconds</span>
+Tsect = Lsect / fs;
+fprintf(<span class="string">'T_SECT = %.4f seconds\n'</span>, Tsect);
+
+<span class="comment">% plot spectrogram</span>
+plotspec(xx + 1j*1e-12, fs, Lsect);
+colorbar; grid <span class="string">on</span>;
+title(<span class="string">'Spectrogram of chirp (2.1b)'</span>);
+</pre>
+<pre class="codeoutput">T_SECT = 0.0640 seconds
+</pre>
+<img vspace="5" hspace="5" src="main_01.png" alt=""> <h2 id="4">2.1(c) &ndash; instantaneous frequency and aliasing</h2>
+<pre class="codeinput">
+<span class="comment">% 2.1c asks us to explain why the instantaneous frequency in the</span>
+<span class="comment">% spectrogram goes up and down between 0 and fs/2</span>
+
+<span class="comment">% There's two reasons this is happening</span>
+<span class="comment">%</span>
+<span class="comment">% Reason 1: 11,000 Hz is WAY above the Nyquist frequency</span>
+<span class="comment">% which is only 2,000 Hz</span>
+<span class="comment">% With this alone we would see values from -fs/2 to fs/2</span>
+<span class="comment">% (Numerically: [-2000, 2000] Hz)</span>
+<span class="comment">%</span>
+<span class="comment">% Reason 2: Because the spectrogram only "sees" the magnitude</span>
+<span class="comment">% of the values (how much energy there is at each point in time)</span>
+<span class="comment">% This makes everything look positive - reducing the values</span>
+<span class="comment">% We would see down to the range of 0 to fs/2 now due to this</span>
+<span class="comment">% (Numerically: [0, 2000] Hz)</span>
+
+<span class="comment">% true (continuous-time) instantaneous frequency</span>
+fi_true = 2*mu*tt + f0; <span class="comment">% 2500*t + 1000</span>
+
+<span class="comment">% alias into [-fs/2, fs/2] band</span>
+fi_alias = fi_true - fs*round(fi_true/fs); <span class="comment">% wrap modulo fs</span>
+<span class="comment">% This is because we are aliasing</span>
+
+<span class="comment">% The spectrogram "sees" alias values as opposed to true values</span>
+fi_seen = abs(fi_alias);
+
+figure;
+plot(tt, fi_true);
+hold <span class="string">on</span>;
+plot(tt, fi_seen, <span class="string">'LineWidth'</span>, 1.5);
+yline(fs/2, <span class="string">'r:'</span>, <span class="string">'Nyquist f_s/2'</span>);
+xlabel(<span class="string">'Time (sec)'</span>);
+ylabel(<span class="string">'Frequency (Hz)'</span>);
+legend(<span class="string">'true f_i(t)'</span>, <span class="string">'aliased |f_i(t)|'</span>, <span class="string">'Location'</span>, <span class="string">'best'</span>);
+title(<span class="string">'Instantaneous frequency vs. aliased frequency'</span>);
+grid <span class="string">on</span>;
+
+<span class="comment">% Verifying with sound</span>
+</pre>
+<img vspace="5" hspace="5" src="main_02.png" alt=""> <h2 id="5">2.2.1 PART (a): Parameters</h2>
+<p>This section simply defines the parameters and function we will be using for the spectogram.</p>
+<pre class="codeinput">fs    = 10000;               <span class="comment">% sampling rate</span>
+T     = 10e-3;               <span class="comment">% 10 ms period</span>
+tStop = 3;                   <span class="comment">% total signal duration</span>
+Amp = 2 / T;                 <span class="comment">% gives triangle peak of 0.5</span>
+
+<span class="comment">% Triangle Wave</span>
+tt=0:(1/fs):tStop;qq=rem(tt,T);xx=Amp*(abs(qq-(0.5*T))-0.25*T);
+</pre>
+<h2 id="6">2.2.1 PART (b): plot first 5 periods</h2>
+<p>With our parameters from the previous part, we will now graph the triangular waveform function with 3 to 5 full periods, I chose 5 periods.</p>
+<pre class="codeinput">fivePeriods = 5*T*fs;        <span class="comment">% Create 5 periods of time</span>
+figure;
+plot(tt(1:fivePeriods), xx(1:fivePeriods));
+xlabel(<span class="string">"Time (s)"</span>); ylabel(<span class="string">"Amplitude"</span>);
+title(<span class="string">"Triangle Wave - First 5 Periods (T = 10 ms)"</span>);
+grid <span class="string">on</span>;
+</pre>
+<img vspace="5" hspace="5" src="main_03.png" alt=""> <h2 id="7">2.2.1 PART (c): Spectrogram</h2>
+<p>In this section, we calculate TSECT and LSECT. TSECT is set to the five periods of the Triangle wave. LSECT is the TSECT multiplied by the Sampling rate. Using these values and the plotspec() function I plot the spectogram.</p>
+<pre class="codeinput">TSECT = 5*T;                 <span class="comment">% 0.05 seconds</span>
+LSECT = TSECT*fs;            <span class="comment">% 500 samples</span>
+
+fprintf(<span class="string">"TSECT = %.4f s, LSECT = %d samples\n"</span>, TSECT, LSECT);
+
+<span class="comment">% Extract first 5 periods</span>
+xsect = xx(1:LSECT);
+<span class="comment">% Plot Spectogram</span>
+figure;
+plotspec(xsect, fs, LSECT);   <span class="comment">% magnitude spectrum</span>
+title(<span class="string">'Harmonic Frequencies of the 5-Period Triangle Wave'</span>);
+<span class="comment">% enable for current figure</span>
+dcm = datacursormode(gcf);
+dcm.Enable = <span class="string">"on"</span>;
+</pre>
+<pre class="codeoutput">TSECT = 0.0500 s, LSECT = 500 samples
+Warning: PLOTSPEC: Signal length must be greater than 1000 to get a reasonable
+spectrogram 
+</pre>
+<img vspace="5" hspace="5" src="main_04.png" alt=""> <h2 id="8">2.2.1 PART (d): Harmonic Frequency List</h2>
+<p>Looking at the graph, harmonic frequencies can be seen every 100Hz, but only on the odd harmonics. Harmonic frequencies seen: 100Hz, 300Hz, 500Hz, 700Hz, 900Hz, 1100Hz, 1300Hz, and 1500Hz. The strength of these harmonics lessens as the frequency increases, it goes from a solid black bar at 100Hz, to a barely visible band of grey at 1500Hz.</p>
+<h2 id="9">2.2.1 PART (e): Fundamental Frequency of the Harmonics</h2>
+<p>We calculate the fundamental frequency of the harmonics.</p>
+<pre class="codeinput">f0 = 1/T;
+fprintf(<span class="string">"Fundamental Frequency f0 = %.1f Hz\n"</span>, f0);
+</pre>
+<pre class="codeoutput">Fundamental Frequency f0 = 100.0 Hz
+</pre>
+<h2 id="10">2.1.1 PART (d): Ratio of A1 vs. A3</h2>
+<p>Using Matlab's data cursor, mark the 1st and 3rd harmonics in the graph and get their respective light index values. I Record the Light Index values of the first and third harmonics. Take those values and find the ratio of the values A1/A3.</p>
+<pre class="codeinput"> A1 = 50.7774
+ A3 = 5.655
+ fprintf(<span class="string">"Light Index value of A1 = %.4f \n"</span>, A1);
+ fprintf(<span class="string">"Light Index Value of A3 = %.3f \n"</span>, A3);
+ Ratio = round(A1/A3);
+ fprintf(<span class="string">"Ratio of A1/A3 = %d \n"</span>, Ratio);
+</pre>
+<pre class="codeoutput">
+A1 =
+
+   50.7774
+
+
+A3 =
+
+    5.6550
+
+Light Index value of A1 = 50.7774 
+Light Index Value of A3 = 5.655 
+Ratio of A1/A3 = 9 
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Sampling and Aliasing: Lab S-8: Spectrograms: Harmonic Lines & Chirp Aliasing. 2 Lab Exercises (2.1 & 2.2.1) (authors: Joshua Palter, Ryan Zarekarizi)
+
+addpath(genpath('../spfirst'))
+spfirst;
+
+%% 2.1(a) – parameter calculation
+
+% 2.1a asks us to determine the parameters given in equation (1)
+% This equation is ψ(t) = 2πμt^2 + 2πf_0t + φ
+f1 = 1000; % start frequency at t1 (Hz)
+f2 = 11000; % end frequency at t2 (Hz)
+t1 = 0; % start time (s)
+t2 = 4;% end time (s)
+
+f0 = f1; % instantaneous freq at t=0
+mu = (f2 - f1) / (2*(t2 - t1)); % from 2*mu = (f2-f1)/(t2-t1)
+
+fprintf('f0 = %.1f Hz\n',  f0); % Display the instantaneous freq at t=0
+fprintf('mu = %.1f Hz/s\n', mu); % Display mu
+
+%% 2.1(b) – generate chirp and spectrogram
+
+% Some setup
+A = 1; % amplitude
+phi = 0; % initial phase (rad)
+
+% 2.1b asks us to generate a chirp signal, and make a spectrogram
+% with length L_sect. We are also to determine its duration (T_sect)
+fs     = 4000; % sampling frequency (Hz)
+dt     = 1/fs;
+tStart = 0;
+tStop  = 4;
+tt     = tStart:dt:tStop; % time
+
+% angle and signal
+psi = 2*pi*mu*tt.^2 + 2*pi*f0*tt + phi;
+xx  = A * real(exp(1j*psi)); % real cosine chirp
+
+% Section Length
+Lsect = 256;
+
+% section duration in seconds
+Tsect = Lsect / fs;
+fprintf('T_SECT = %.4f seconds\n', Tsect);
+
+% plot spectrogram
+plotspec(xx + 1j*1e-12, fs, Lsect);
+colorbar; grid on;
+title('Spectrogram of chirp (2.1b)');
+
+%% 2.1(c) – instantaneous frequency and aliasing
+
+% 2.1c asks us to explain why the instantaneous frequency in the
+% spectrogram goes up and down between 0 and fs/2
+
+% There's two reasons this is happening
+%
+% Reason 1: 11,000 Hz is WAY above the Nyquist frequency
+% which is only 2,000 Hz
+% With this alone we would see values from -fs/2 to fs/2
+% (Numerically: [-2000, 2000] Hz)
+%
+% Reason 2: Because the spectrogram only "sees" the magnitude
+% of the values (how much energy there is at each point in time)
+% This makes everything look positive - reducing the values
+% We would see down to the range of 0 to fs/2 now due to this
+% (Numerically: [0, 2000] Hz)
+
+% true (continuous-time) instantaneous frequency
+fi_true = 2*mu*tt + f0; % 2500*t + 1000
+
+% alias into [-fs/2, fs/2] band
+fi_alias = fi_true - fs*round(fi_true/fs); % wrap modulo fs
+% This is because we are aliasing
+
+% The spectrogram "sees" alias values as opposed to true values
+fi_seen = abs(fi_alias);
+
+figure;
+plot(tt, fi_true);
+hold on;
+plot(tt, fi_seen, 'LineWidth', 1.5);
+yline(fs/2, 'r:', 'Nyquist f_s/2');
+xlabel('Time (sec)');
+ylabel('Frequency (Hz)');
+legend('true f_i(t)', 'aliased |f_i(t)|', 'Location', 'best');
+title('Instantaneous frequency vs. aliased frequency');
+grid on;
+
+% Verifying with sound
+
+%% 2.2.1 PART (a): Parameters
+% This section simply defines the parameters and function we will
+% be using for the spectogram.
+
+fs    = 10000;               % sampling rate
+T     = 10e-3;               % 10 ms period
+tStop = 3;                   % total signal duration
+Amp = 2 / T;                 % gives triangle peak of 0.5
+
+% Triangle Wave
+tt=0:(1/fs):tStop;qq=rem(tt,T);xx=Amp*(abs(qq-(0.5*T))-0.25*T);
+
+%% 2.2.1 PART (b): plot first 5 periods
+% With our parameters from the previous part, we will now graph the
+% triangular waveform function with 3 to 5 full periods, I chose 5
+% periods.
+fivePeriods = 5*T*fs;        % Create 5 periods of time
+figure;
+plot(tt(1:fivePeriods), xx(1:fivePeriods));
+xlabel("Time (s)"); ylabel("Amplitude");
+title("Triangle Wave - First 5 Periods (T = 10 ms)");
+grid on;
+
+%% 2.2.1 PART (c): Spectrogram
+% In this section, we calculate TSECT and LSECT.
+% TSECT is set to the five periods of the Triangle wave.
+% LSECT is the TSECT multiplied by the Sampling rate.
+% Using these values and the plotspec() function I plot the spectogram.
+
+TSECT = 5*T;                 % 0.05 seconds
+LSECT = TSECT*fs;            % 500 samples
+
+fprintf("TSECT = %.4f s, LSECT = %d samples\n", TSECT, LSECT);
+
+% Extract first 5 periods
+xsect = xx(1:LSECT);
+% Plot Spectogram
+figure;
+plotspec(xsect, fs, LSECT);   % magnitude spectrum
+title('Harmonic Frequencies of the 5-Period Triangle Wave');
+% enable for current figure
+dcm = datacursormode(gcf);
+dcm.Enable = "on";
+
+%% 2.2.1 PART (d): Harmonic Frequency List
+% Looking at the graph, harmonic frequencies can be seen every 100Hz, but
+% only on the odd harmonics. 
+% Harmonic frequencies seen: 100Hz, 300Hz, 500Hz, 700Hz, 900Hz, 1100Hz,
+% 1300Hz, and 1500Hz. 
+% The strength of these harmonics lessens as the frequency increases, it
+% goes from a solid black bar at 100Hz, to a barely visible band of grey at
+% 1500Hz.
+
+%% 2.2.1 PART (e): Fundamental Frequency of the Harmonics
+% We calculate the fundamental frequency of the harmonics.
+f0 = 1/T;
+fprintf("Fundamental Frequency f0 = %.1f Hz\n", f0);
+
+
+%% 2.1.1 PART (d): Ratio of A1 vs. A3
+% Using Matlab's data cursor, mark the 1st and 3rd harmonics in the graph
+% and get their respective light index values.
+% I Record the Light Index values of the first and third harmonics.
+% Take those values and find the ratio of the values A1/A3.
+ A1 = 50.7774
+ A3 = 5.655
+ fprintf("Light Index value of A1 = %.4f \n", A1);
+ fprintf("Light Index Value of A3 = %.3f \n", A3);
+ Ratio = round(A1/A3);
+ fprintf("Ratio of A1/A3 = %d \n", Ratio);
+
+##### SOURCE END #####
+-->
+</body>
+</html>
