@@ -1,7 +1,7 @@
-main.m includes Lab S-8 problems 2.1 and 2.2.1, while 2_2_23.ipynb includes problems 2.2.2 and 2.2.3. These are split as Jordy Larrea Rodriguez wrote python code instead of matlab!
+main.m includes Lab S-8 problems 2.1 and 2.2.1, while the folders 2_2_2 and 2_2_3 include problems 2.2.2 and 2.2.3. These are split as Jordy Larrea Rodriguez wrote python code in the latter two folders instead of matlab.
 
 
-Python requirements can be install via
+The Python requirements can be install via
 
 ```pip install -r requirements.txt```
 
