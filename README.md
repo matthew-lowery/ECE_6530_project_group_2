@@ -1,3 +1,6 @@
+
+Publicly accessible Code repository for group 2's final project in ECE-5530/6530. The members are: Matthew Lowery, Timothy Felt, Joshua Palter, Ryan Zarekarizi and Jordy Larrea Rodriguez.
+
 The directory structure is as follows:
 
 - SamplingandAliasing_group2_LOWERY/
